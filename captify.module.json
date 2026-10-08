@@ -1,0 +1,125 @@
+{
+  "id": "feedbacks",
+  "name": "Feedbacks",
+  "version": "0.1.0",
+  "shell": "v1",
+  "icon": "file",
+  "health": "/feedbacks/api/health",
+  "resources": [
+    {
+      "name": "feedbacks",
+      "displayName": "Feedbacks",
+      "description": "The tenant's notes",
+      "actions": [
+        "read",
+        "list",
+        "create",
+        "update",
+        "delete"
+      ],
+      "attributes": [
+        {
+          "name": "createdBy",
+          "label": "Created by",
+          "type": "string"
+        }
+      ],
+      "pages": [
+        "/feedbacks"
+      ],
+      "apis": [
+        "/feedbacks/api"
+      ],
+      "baseActions": [
+        "read",
+        "list"
+      ]
+    }
+  ],
+  "types": [
+    {
+      "name": "feedbacks.note",
+      "label": "Note",
+      "description": "A short note",
+      "fields": {
+        "title": {
+          "kind": "string",
+          "label": "Title"
+        },
+        "done": {
+          "kind": "boolean",
+          "label": "Done"
+        }
+      },
+      "title": "title",
+      "link": "/feedbacks/notes/{id}"
+    }
+  ],
+  "database": {
+    "tables": [
+      "notes"
+    ],
+    "migrations": "migrations"
+  },
+  "migrate": [
+    "node",
+    "node_modules/@captify-io/sdk/dist/migrate-main.js"
+  ],
+  "routes": [
+    {
+      "path": "/feedbacks",
+      "methods": [
+        "GET"
+      ],
+      "permission": "feedbacks:list"
+    },
+    {
+      "path": "/feedbacks/notes/:id",
+      "methods": [
+        "GET"
+      ],
+      "permission": "feedbacks:read"
+    },
+    {
+      "path": "/feedbacks/api/notes",
+      "methods": [
+        "GET"
+      ],
+      "permission": "feedbacks:list"
+    },
+    {
+      "path": "/feedbacks/api/notes",
+      "methods": [
+        "POST"
+      ],
+      "permission": "feedbacks:create"
+    }
+  ],
+  "readable": {
+    "path": "/feedbacks/api/readable",
+    "permission": "feedbacks:read"
+  },
+  "platformOperations": [
+    "GET /v1/me",
+    "POST /v1/decisions",
+    "POST /v1/access/filter",
+    "POST /v1/access/check",
+    "POST /v1/audit",
+    "POST /v1/events"
+  ],
+  "navigation": [
+    {
+      "label": "Notes",
+      "path": "/feedbacks",
+      "category": "Work",
+      "icon": "list"
+    },
+    {
+      "label": "New note",
+      "path": "/feedbacks/new",
+      "group": "Write",
+      "icon": "pencil",
+      "permission": "feedbacks:create"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "port": 3700,
+  "appPort": 3701,
+  "coreRoles": [
+    {
+      "name": "admin",
+      "priority": 100,
+      "allow": {
+        "feedbacks": [
+          "*"
+        ]
+      }
+    },
+    {
+      "name": "user",
+      "priority": 0,
+      "base": true
+    }
+  ],
+  "users": [
+    {
+      "sub": "ada",
+      "name": "Ada Lovelace",
+      "email": "ada@example.test",
+      "tenant": "acme",
+      "roles": [
+        "admin"
+      ]
+    },
+    {
+      "sub": "grace",
+      "name": "Grace Hopper",
+      "email": "grace@example.test",
+      "tenant": "acme",
+      "roles": [
+        "user"
+      ]
+    }
+  ]
+}

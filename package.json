@@ -1,0 +1,35 @@
+{
+  "name": "feedbacks",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "captify dev",
+    "dev:app": "next dev --hostname 127.0.0.1",
+    "build": "captify build",
+    "build:app": "next build",
+    "start": "next start --hostname 127.0.0.1",
+    "check": "captify check && tsc --noEmit && biome check",
+    "test": "vitest run",
+    "sdk": "node scripts/pack-sdk.mjs"
+  },
+  "dependencies": {
+    "@captify-io/sdk": "^0.1.0",
+    "@captify-io/ui": "^0.1.0",
+    "next": "^16.3.7",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.14",
+    "@captify-io/platform": "^0.1.0",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.6.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.2"
+  }
+}

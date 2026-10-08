@@ -1,0 +1,8 @@
+node_modules/
+.next/
+.captify/
+next-env.d.ts
+*.tsbuildinfo
+.packs/
+.env*
+!.env.example

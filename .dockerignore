@@ -1,0 +1,11 @@
+node_modules/
+.next/
+.captify/
+.git/
+.jj/
+.env*
+!.env.example
+*.pem
+*.key
+*.jwk
+.npmrc

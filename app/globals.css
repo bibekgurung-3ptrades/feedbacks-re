@@ -1,0 +1,7 @@
+/*
+ * Tailwind for this app and the kit. The layer order puts Tailwind's reset under the kit's `ui`
+ * layer and utilities over both. The kit maps the estate's theme to Tailwind's names.
+ */
+@layer theme, base, ui, components, utilities;
+@import "tailwindcss";
+@import "@captify-io/ui/styles.css";
