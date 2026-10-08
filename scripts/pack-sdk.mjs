@@ -27,13 +27,10 @@ const run = (args, cwd) => {
       cwd,
       stdio: "inherit",
     });
-  execSync(
-    command.map((arg) => (/\s/.test(arg) ? `"${arg}"` : arg)).join(" "),
-    {
-      cwd,
-      stdio: "inherit",
-    },
-  );
+  execSync(command.map((arg) => (/\s/.test(arg) ? `"${arg}"` : arg)).join(" "), {
+    cwd,
+    stdio: "inherit",
+  });
 };
 
 const manifestFile = join(root, "package.json");

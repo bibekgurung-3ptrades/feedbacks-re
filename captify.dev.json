@@ -14,7 +14,19 @@
     {
       "name": "user",
       "priority": 0,
-      "base": true
+      "base": true,
+      "allow": {
+        "feedbacks": [
+          "list",
+          "read",
+          "create",
+          "update",
+          "generate",
+          "vote",
+          "comment",
+          "nav-view"
+        ]
+      }
     }
   ],
   "users": [

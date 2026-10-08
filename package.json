@@ -14,8 +14,8 @@
     "sdk": "node scripts/pack-sdk.mjs"
   },
   "dependencies": {
-    "@captify-io/sdk": "^0.1.0",
-    "@captify-io/ui": "^0.1.0",
+    "@captify-io/sdk": "file:.packs/captify-io-sdk-0.1.0-2de3d1ef22ba.tgz",
+    "@captify-io/ui": "file:.packs/captify-io-ui-0.1.0-8a7c002dd1bb.tgz",
     "next": "^16.3.7",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.14",
-    "@captify-io/platform": "^0.1.0",
+    "@captify-io/platform": "file:.packs/captify-io-platform-0.1.0-0d7910bdc65b.tgz",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^26.6.3",
     "@types/react": "^19.3.0",
@@ -31,5 +31,13 @@
     "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2",
     "vitest": "^5.0.2"
+  },
+  "overrides": {
+    "@captify-io/contracts": "file:.packs/captify-io-contracts-0.1.0-e55890d1b3ce.tgz",
+    "@captify-io/tokens": "file:.packs/captify-io-tokens-0.1.0-99f2f7bbe08f.tgz",
+    "@captify-io/sdk": "file:.packs/captify-io-sdk-0.1.0-2de3d1ef22ba.tgz",
+    "@captify-io/ui": "file:.packs/captify-io-ui-0.1.0-8a7c002dd1bb.tgz",
+    "@captify-io/logger": "file:.packs/captify-io-logger-0.1.0-bb27b5f91439.tgz",
+    "@captify-io/platform": "file:.packs/captify-io-platform-0.1.0-0d7910bdc65b.tgz"
   }
 }

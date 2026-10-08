@@ -3,26 +3,23 @@
   "name": "Feedbacks",
   "version": "0.1.0",
   "shell": "v1",
-  "icon": "file",
+  "icon": "chat",
   "health": "/feedbacks/api/health",
   "resources": [
     {
       "name": "feedbacks",
       "displayName": "Feedbacks",
-      "description": "The tenant's notes",
+      "description": "Submit and manage issues, feature requests, and feedback",
       "actions": [
-        "read",
         "list",
+        "read",
         "create",
         "update",
-        "delete"
-      ],
-      "attributes": [
-        {
-          "name": "createdBy",
-          "label": "Created by",
-          "type": "string"
-        }
+        "delete",
+        "generate",
+        "vote",
+        "comment",
+        "nav-view"
       ],
       "pages": [
         "/feedbacks"
@@ -31,39 +28,57 @@
         "/feedbacks/api"
       ],
       "baseActions": [
+        "list",
         "read",
-        "list"
+        "create",
+        "update",
+        "delete",
+        "generate",
+        "vote",
+        "comment",
+        "nav-view"
       ]
     }
   ],
-  "types": [
-    {
-      "name": "feedbacks.note",
-      "label": "Note",
-      "description": "A short note",
-      "fields": {
-        "title": {
-          "kind": "string",
-          "label": "Title"
-        },
-        "done": {
-          "kind": "boolean",
-          "label": "Done"
+  "standsFor": {
+    "app": "feedbacks",
+    "featurePages": {
+      "menuItems": [],
+      "pageViewConfig": [
+        {
+          "pageKey": "feedbacks",
+          "label": "Feedbacks",
+          "path": "/feedbacks",
+          "supportedViews": [
+            "card",
+            "table"
+          ]
         }
-      },
-      "title": "title",
-      "link": "/feedbacks/notes/{id}"
+      ]
+    }
+  },
+  "readTypes": [
+    "designer.feedbacks"
+  ],
+  "writeTypes": [
+    "designer.feedbacks"
+  ],
+  "coreSearch": [
+    {
+      "schema": "feedbacks",
+      "index": "captify-search-feedbacks",
+      "kind": "feedback",
+      "category": "Feedback",
+      "href": "/feedbacks/{id}"
     }
   ],
-  "database": {
-    "tables": [
-      "notes"
-    ],
-    "migrations": "migrations"
-  },
-  "migrate": [
-    "node",
-    "node_modules/@captify-io/sdk/dist/migrate-main.js"
+  "notifications": [
+    {
+      "type": "assigned",
+      "core": [
+        "feedback_assigned"
+      ]
+    }
   ],
   "routes": [
     {
@@ -72,54 +87,28 @@
         "GET"
       ],
       "permission": "feedbacks:list"
-    },
-    {
-      "path": "/feedbacks/notes/:id",
-      "methods": [
-        "GET"
-      ],
-      "permission": "feedbacks:read"
-    },
-    {
-      "path": "/feedbacks/api/notes",
-      "methods": [
-        "GET"
-      ],
-      "permission": "feedbacks:list"
-    },
-    {
-      "path": "/feedbacks/api/notes",
-      "methods": [
-        "POST"
-      ],
-      "permission": "feedbacks:create"
     }
   ],
-  "readable": {
-    "path": "/feedbacks/api/readable",
-    "permission": "feedbacks:read"
-  },
   "platformOperations": [
     "GET /v1/me",
     "POST /v1/decisions",
     "POST /v1/access/filter",
     "POST /v1/access/check",
     "POST /v1/audit",
-    "POST /v1/events"
+    "POST /v1/events",
+    "GET /v1/objects/{type}",
+    "POST /v1/objects/{type}/query",
+    "POST /v1/objects/{type}",
+    "GET /v1/objects/{type}/{id}",
+    "PATCH /v1/objects/{type}/{id}",
+    "DELETE /v1/objects/{type}/{id}"
   ],
   "navigation": [
     {
-      "label": "Notes",
+      "label": "Feedbacks",
       "path": "/feedbacks",
       "category": "Work",
       "icon": "list"
-    },
-    {
-      "label": "New note",
-      "path": "/feedbacks/new",
-      "group": "Write",
-      "icon": "pencil",
-      "permission": "feedbacks:create"
     }
   ]
 }
